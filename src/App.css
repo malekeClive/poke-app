@@ -1,38 +1,86 @@
-.App {
-  text-align: center;
+.card-glassmorph {
+  @apply px-2;
+  @apply py-4;
+  @apply text-white;
+  border-radius: 4px;
+  background: rgba( 255, 255, 255, 0.50 );
+  box-shadow: 0 8px 32px 0 rgba( 255, 149, 138, 0.47 );
+  backdrop-filter: blur( 3.5px );
+  -webkit-backdrop-filter: blur( 3.5px );
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.background-popup {
+  @apply fixed;
+  @apply w-full;
+  @apply h-screen;
+  @apply top-0;
+  @apply right-0;
+  @apply left-0;
+  @apply bottom-0;
+  border-radius: 4px;
+  background: rgba( 255, 255, 255, 0.1 );
+  animation-name: background-popup-active;
+  animation-fill-mode: forwards;
+  animation-duration: .05s;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
+@keyframes background-popup-active {
   from {
-    transform: rotate(0deg);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur( 0px );
   }
   to {
-    transform: rotate(360deg);
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur( 9px );
   }
+}
+
+.background-popup-active {
+  backdrop-filter: blur( 9px );
+}
+
+.left-popup {
+  @apply fixed;
+  @apply w-96;
+  @apply bg-white;
+  @apply bottom-0;
+  top: -70px;
+  bottom: -70px;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  animation-name: left-popup-active;
+  animation-duration: .3s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+
+  background: rgba( 255, 255, 255, .3 );
+  box-shadow: 0 8px 32px 0 rgba( 255, 149, 138, 0.1 );
+  backdrop-filter: blur( 1px );
+  -webkit-backdrop-filter: blur( 1px );
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+@keyframes left-popup-active {
+  0% {
+    left: -24rem;
+  }
+  50% {
+    left: -1rem;
+  }
+
+  100% {
+    left: -2rem;
+  }
+}
+
+.popup-content {
+  @apply text-white;
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+  left: 20px;
+  display: flex;
+  flex-direction: row;
 }
