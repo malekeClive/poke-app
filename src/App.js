@@ -11,10 +11,8 @@ function App() {
     <PokemonContext>
       <div className="App">
         <Pokemons />
-        <div className="flex flex-row justify-around items-center">
-          <PreviewPokemon />
-          <MyPokemons />
-        </div>
+        <MyPokemons />
+        <PreviewPokemon />
       </div>
     </PokemonContext>
   );

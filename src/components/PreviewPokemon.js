@@ -1,20 +1,10 @@
-import React, { useState, useContext, useEffect, useRef } from 'react'
+import React, { useContext } from 'react'
 import { PokemonCtx } from '../PokemonContext';
+import pokeball from '../assets/pokeball.png'
 
 export default function PreviewPokemon() {
   const pokemonContext = useContext(PokemonCtx);
   const pokemon = pokemonContext.pokemon;
-  let [isActive, setIsActive] = useState(false);
-  const firstRun = useRef(true);
-
-  useEffect(() => {
-    if (firstRun.current) {
-      firstRun.current = false;
-      return;
-    }
-
-    setIsActive(true);
-  }, [pokemon])
 
   const getAbilities = () => {
     if (pokemon.abilities.length > 0) {
@@ -25,23 +15,31 @@ export default function PreviewPokemon() {
   }
 
   const popupHandler = () => {
-    setIsActive(() => !isActive);
+    pokemonContext.setPreviewPopup(false);
+  }
+
+  const catchPokemon = () => {
+    pokemonContext.setMyList((prev) => [...prev, pokemon])
   }
 
   return (
-    <div className={`${isActive ? 'static' : 'hidden'}`}>
+    <div className={`${pokemonContext.previewPopup ? 'static' : 'hidden'}`}>
       <div className="background-popup"></div>
-      <div className={`left-popup ${isActive ? 'open-popup' : ''}`}></div>
-      <div className="popup-content">
+      <div className={`left-popup ${pokemonContext.previewPopup ? 'open-popup' : ''}`}>
         <div>
-          <p className="text-4xl font-bold">{pokemon.name}</p>
+          <img className="w-24 mx-auto" src={pokemon.sprite} alt={pokemon.name}></img>
+        </div>
+        <div className="text-center">
+          <p className="text-4xl font-bold text-center">{pokemon.name}</p>
           <p className="text-2xl">Abilities</p>
           {getAbilities()}
+          <button className="absolute top-0 right-0 p-4" onClick={popupHandler}>Close</button>
+          <button className="w-full relative" onClick={catchPokemon}>
+            <div className="animate-ping inline-flex h-12 w-12 rounded-full bg-white opacity-75"></div>
+            {/* <span className="animate-ping inline-flex h-12 w-12 rounded-full bg-white opacity-75"></span> */}
+            <img className="w-16 mx-auto absolute left-0 right-0 top-0" src={pokeball} alt="pokeball"></img>
+          </button>
         </div>
-        <div>
-          <img src={pokemon.sprite} alt={pokemon.name}></img>
-        </div>
-        <button onClick={popupHandler}>Close</button>
       </div>
     </div>
   )

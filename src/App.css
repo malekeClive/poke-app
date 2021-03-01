@@ -43,13 +43,13 @@
 
 .left-popup {
   @apply fixed;
-  @apply w-96;
+  @apply h-96;
   @apply bg-white;
   @apply bottom-0;
-  top: -70px;
-  bottom: -70px;
-  border-top-right-radius: 50%;
-  border-bottom-right-radius: 50%;
+  @apply p-4;
+  width: 50%;
+  left: 50%;
+  transform: translateX(-50%);
   animation-name: left-popup-active;
   animation-duration: .3s;
   animation-fill-mode: forwards;
@@ -64,23 +64,9 @@
 
 @keyframes left-popup-active {
   0% {
-    left: -24rem;
+    bottom: -24rem;
   }
-  50% {
-    left: -1rem;
-  }
-
   100% {
-    left: -2rem;
+    bottom: 0;
   }
-}
-
-.popup-content {
-  @apply text-white;
-  position: absolute;
-  transform: translateY(-50%);
-  top: 50%;
-  left: 20px;
-  display: flex;
-  flex-direction: row;
 }

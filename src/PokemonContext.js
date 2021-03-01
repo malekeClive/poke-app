@@ -11,8 +11,10 @@ const initValue = {
 const PokemonContext = ({children}) => {
   let [pokemon, setPokemon] = useState({...initValue});
   let [myList, setMyList] = useState([]);
+  let [previewPopup, setPreviewPopup] = useState(false);
 
   const getPokemonBy = async (url) => {
+    setPreviewPopup(true);
     const fetchByUrl = await fetch(url);
     const convertToJson = await fetchByUrl.json();
 
@@ -27,7 +29,7 @@ const PokemonContext = ({children}) => {
   }
 
   return (
-    <PokemonCtx.Provider value={{pokemon, myList, getPokemonBy}}>
+    <PokemonCtx.Provider value={{pokemon, myList, setMyList, getPokemonBy, previewPopup, setPreviewPopup}}>
       {children}
     </PokemonCtx.Provider>
   )
