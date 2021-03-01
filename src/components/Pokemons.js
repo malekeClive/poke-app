@@ -49,14 +49,14 @@ const Pokemons = () => {
   const loadMorePokemon = () => {
     if (pokemons.length > 0) {
       return (
-        <button className="card-glassmorph" onClick={() => setLoadCounter(prev => prev += 10)}>Load More</button>
+        <button className="card" onClick={() => setLoadCounter(prev => prev += 10)}>Load More</button>
       )
     }
   }
 
   return (
     <div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 p-2">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-2">
         {renderPokemon()}
         {loadMorePokemon()}
       </div>

@@ -9,7 +9,7 @@ const Pokemon = memo(({ pokemon }) => {
   }
 
   return (
-    <button className="card-glassmorph" onClick={() => getPokemon(pokemon.url)}>
+    <button className="card" onClick={() => getPokemon(pokemon.url)}>
       {pokemon.name}
     </button>
   )
