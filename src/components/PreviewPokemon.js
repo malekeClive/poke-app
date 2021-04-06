@@ -58,7 +58,7 @@ export default function PreviewPokemon() {
           <p className="text-4xl font-bold text-center">{pokemon.name}</p>
           <p className="text-2xl">Abilities</p>
           {getAbilities()}
-          <button className="absolute top-0 right-0 p-4" onClick={popupHandler}>Close</button>
+          <button className="absolute top-0 right-0 p-4" onClick={popupHandler}>X</button>
           {checkPokemonOnMyList()}
         </div>
       </div>
