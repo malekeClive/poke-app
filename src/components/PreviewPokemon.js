@@ -41,7 +41,7 @@ export default function PreviewPokemon() {
 
     return (
       <button className="w-full relative top-6" onClick={catchPokemon}>
-        <div className="animate-ping inline-flex h-12 w-12 rounded-full bg-gray-600 opacity-75"></div>
+        {/* <div className="animate-ping inline-flex h-12 w-12 rounded-full bg-gray-600 opacity-75"></div> */}
         <img className="w-16 mx-auto absolute left-0 right-0 top-0" src={pokeball} alt="pokeball"></img>
       </button>
     )
