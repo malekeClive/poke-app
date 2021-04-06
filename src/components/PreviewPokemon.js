@@ -35,7 +35,7 @@ export default function PreviewPokemon() {
     const alreadyHas = pokemonContext.myList.find(poke => poke.id === pokemon.id);
     if (alreadyHas) {
       return (
-        <div>Owner</div>
+        <div>Owned</div>
       )
     }
 
